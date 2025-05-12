@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Suficiente!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>¡Suficiente!</h1>
+  <div id="category">Presiona "Nueva Ronda"</div>
+
+  <div class="circle-container" id="letter-buttons">
+    <div class="center-button">
+      <svg class="progress-ring" width="120" height="120">
+        <circle class="progress-ring__circle" stroke="#fff" stroke-width="10" fill="transparent" r="50" cx="60" cy="60"/>
+      </svg>
+      <button id="start-button" onclick="resetTimer()">Reiniciar<br>Tiempo</button>
+    </div>
+  </div>
+
+  <div id="timer">0</div>
+  <button onclick="startRound()">Nueva Ronda</button>
+
+  <audio id="click-sound" src="sounds/click.mp3"></audio>
+  <audio id="alarm-sound" src="sounds/alarm.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
