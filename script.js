@@ -2,9 +2,9 @@
 const letters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
 let countdown;
 let time = 10;
+let circle, circumference;
 
-// Crear los botones en círculo
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("letter-buttons");
   const rect = container.getBoundingClientRect();
   const centerX = rect.width / 2;
@@ -21,6 +21,7 @@ window.onload = () => {
     button.innerText = letter;
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
+    button.id = `btn-${letter}`;
 
     button.addEventListener("click", () => {
       button.disabled = true;
@@ -31,23 +32,36 @@ window.onload = () => {
     container.appendChild(button);
   });
 
-  // Inicializar SVG círculo para el temporizador
-  const circle = document.querySelector(".progress-ring__circle");
-  const radiusCircle = circle.r.baseVal.value;
-  const circumference = 2 * Math.PI * radiusCircle;
-  circle.style.strokeDasharray = `${circumference} ${circumference}`;
-  circle.style.strokeDashoffset = circumference;
+  circle = document.querySelector(".progress-ring__circle");
+  if (circle) {
+    const radius = circle.r.baseVal.value;
+    circumference = 2 * Math.PI * radius;
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+  }
 
-  window.setProgress = function(percent) {
-    const offset = circumference - (percent / 100) * circumference;
-    circle.style.strokeDashoffset = offset;
-  };
-};
+  document.getElementById("timer").innerText = time;
+});
+
+function setProgress(percent) {
+  if (!circle || !circumference) return;
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+}
 
 function startRound() {
   const categories = ["Nombre MASCULINO", "País del mundo", "Animal", "Algo que VUELE", "Color", "Comida"];
   const random = categories[Math.floor(Math.random() * categories.length)];
   document.getElementById("category").innerText = random;
+
+  // Restaurar todos los botones de letras
+  letters.forEach(letter => {
+    const btn = document.getElementById(`btn-${letter}`);
+    if (btn) {
+      btn.disabled = false;
+      btn.style.backgroundColor = "#2196f3";
+    }
+  });
 }
 
 function resetTimer() {
