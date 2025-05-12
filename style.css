@@ -149,3 +149,11 @@ button[onclick="startRound()"] {
     font-size: 12px;
   }
 }
+
+.progress-ring {
+  pointer-events: none;
+}
+
+.center-button button {
+  pointer-events: auto;
+}
