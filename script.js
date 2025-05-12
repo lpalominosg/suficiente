@@ -5,14 +5,17 @@ let time = 10;
 // Crear los botones en círculo
 window.onload = () => {
   const container = document.getElementById("letter-buttons");
-  const radius = 170;
-  const centerX = 200;
-  const centerY = 200;
+
+  // Obtener tamaño del contenedor real
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  const radius = Math.min(centerX, centerY) - 30; // dejar margen
 
   letters.forEach((letter, index) => {
     const angle = (index / letters.length) * (2 * Math.PI);
-    const x = centerX + radius * Math.cos(angle) - 25;
-    const y = centerY + radius * Math.sin(angle) - 25;
+    const x = centerX + radius * Math.cos(angle) - 20;
+    const y = centerY + radius * Math.sin(angle) - 20;
 
     const button = document.createElement("button");
     button.className = "letter-button";
