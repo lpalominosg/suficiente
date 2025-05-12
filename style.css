@@ -1,94 +1,84 @@
 body {
-  padding: 10px;
-  font-family: sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #eee;
-  overflow-x: hidden;
+  background-color: #f7f7f7;
 }
 
 h1 {
   margin-top: 20px;
 }
 
+#category {
+  margin: 10px 0 20px;
+}
+
 .circle-container {
   position: relative;
-  width: 400px;
-  height: 400px;
-  margin: 30px auto;
+  width: 90vw;
+  max-width: 400px;
+  height: 90vw;
+  max-height: 400px;
+  margin: 0 auto 30px;
 }
 
 .letter-button {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background-color: #2196f3;
   color: white;
-  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
   border: none;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .center-button {
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
 }
 
-#start-button {
-  width: 100px;
-  height: 100px;
+.center-button button {
   background-color: #e91e63;
   color: white;
   border: none;
+  padding: 12px;
   border-radius: 50%;
-  font-size: 16px;
+  width: 100px;
+  height: 100px;
+  font-size: 14px;
   cursor: pointer;
-  position: relative;
-  z-index: 1;
+  line-height: 1.2;
 }
 
 #timer {
-  font-size: 32px;
-  margin: 10px 0;
-  color: #e91e63;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-/* Temporizador circular */
-.progress-ring {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  z-index: 0;
-}
-
-.progress-ring__circle {
-  transition: 1s linear stroke-dashoffset;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .circle-container {
-    width: 80vw;
-    height: 80vw;
-    max-width: 400px;
-    max-height: 400px;
-    margin: 30px auto;
-    position: relative;
+/* Responsive text/buttons */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
   }
 
   .letter-button {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
   }
 
-  #start-button {
+  .center-button button {
     width: 80px;
     height: 80px;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
